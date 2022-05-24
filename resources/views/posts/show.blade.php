@@ -10,6 +10,12 @@
         <div>
             <img class="w-100" src="{{ $post->img }}" alt="{{ $post->title }}">
             <h1 class="mt-3">{{ $post->title }}</h1>
+            <div>
+                @foreach ($post->categories as $category)
+                    <span class="badge"
+                        style="background-color: {{ $category->color }}">{{ $category->name }}</span>
+                @endforeach
+            </div>
             <span>{{ $post->author }}</span><br>
             <span>Created at: {{ $post->created_at }}</span>
             <p class="mt-3">{{ $post->text }}</p>
