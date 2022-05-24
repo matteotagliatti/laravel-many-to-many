@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Categories</th>
                     <th scope="col">Author</th>
                     <th scope="col">Text</th>
                     <th scope="col">Created</th>
@@ -17,6 +18,12 @@
                     <tr>
                         <th scope="row">{{ $post->id }}</th>
                         <td><a href="{{ route('posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
+                        <td>
+                            @foreach ($post->categories as $category)
+                                <span class="badge"
+                                    style="background-color: {{ $category->color }}">{{ $category->name }}</span>
+                            @endforeach
+                        </td>
                         <td>{{ $post->author }}</td>
                         <td>{{ Str::of($post->text)->limit(40, '...') }}</td>
                         <td>{{ $post->created_at }}</td>
